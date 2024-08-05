@@ -1,0 +1,12 @@
+# test.yaml - Ansible Playbook Test
+
+- hosts: localhost
+
+  tasks:
+
+    - name: Test Shell Built-In
+      ansible.builtin.shell: |
+        echo "It worked"
+
+
+# EOF
