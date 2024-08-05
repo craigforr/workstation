@@ -16,11 +16,38 @@ Make certain you have your sudo password for at least the first run.  Subsequent
 
 Be certain to log into the Mac App Store prior to utilizing `mas` for App Store software installation or uninstallation.
 
+#### Software Prerequisites
+
+The following commands must be installed and available in your Terminal app:
+
+- `git`
+- `brew` (Homebrew)
+
+If Homebrew is not installed, then follow the [Homebrew installation instructions](https://brew.sh/) to do so.
+
+#### Optional
+
+You may wish to set your default shell to Bash, which you can do in Terminal's Settings:
+
+```zsh
+# Get the current default shell (Blank line indicates ZSH)
+defaults read com.apple.Terminal Shell
+
+# Set the current default shell to BASH (/bin/bash)
+defaults write com.apple.Terminal Shell "/bin/bash"
+
+# Set the current default shell back to default (/bin/zsh)
+defaults write com.apple.Terminal Shell ""
+```
+
 ### Initialzation
 
 Initial setup of environment for automation.
 
 ```bash
+# Verify that you are running inside Bash shell
+/bin/bash
+
 # Create XDG Base Directory Specification compatible directory structure
 mkdir -p ~/.config
 
