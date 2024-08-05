@@ -1,0 +1,48 @@
+---
+- name: Configure localhost
+  hosts: all
+
+  vars_files:
+    # Include default playbook configuration
+    - default.config.yml
+
+  pre_tasks:
+    - name: Include Playbook Configuration
+      include_vars: "{{ item }}"
+      with_fileglob:
+        # NOTE: playbook_dir here is an Ansible special variable representing
+        # the path to the directory of the current playbook being executed
+        - "{{ playbook_dir }}/config.yml"
+      tags: ['always']
+
+    - name: Data Directory
+      ansible.builtin.file:
+        path: "{{ data_dir }}"
+        state: directory
+      tags: ['always']
+
+  roles:
+    - role: homebrew
+      tags:
+        - 'homebrew'
+    - role: mas
+      when: mas_installed_apps or mas_uninstalled_apps
+      tags:
+        - 'mas'
+
+  tasks:
+    - name: HOME Environment Variable
+      ansible.builtin.debug:
+        msg: "'{{ lookup('ansible.builtin.env', 'HOME') }}' is the HOME environment variable."
+
+    - import_tasks: tasks/prerequisites.yml
+      tags:
+        - 'always'
+
+    - import_tasks: tasks/sudoers.yml
+      when: configure_sudoers
+      tags:
+        - 'firstrun'
+        - 'sudoers'
+
+# EOF

@@ -1,0 +1,9 @@
+---
+# prerequisites.yml
+
+- name: Am I running on Mac OS X?
+  fail:
+    msg: Target host is not running Mac OS X
+  when: ansible_distribution != 'MacOSX'
+
+...
