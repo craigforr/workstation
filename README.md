@@ -2,6 +2,13 @@
 
 Windows and macOS Workstation configuration automation based on Ansible
 
+All of the work here is based on the following roles and playbooks written by [Jeff Geerling](https://www.jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/):
+
+- [geerlingguy/ansible-collection-mac: Collection of macOS automation tools for Ansible.](https://github.com/geerlingguy/ansible-collection-mac)
+- [geerlingguy/mac-dev-playbook: Mac setup and configuration via Ansible.](https://github.com/geerlingguy/mac-dev-playbook)
+- [geerlingguy/ansible-role-dotfiles: Ansible Role - Easy and flexible dotfile installation.](https://github.com/geerlingguy/ansible-role-dotfiles)
+- [geerlingguy/dotfiles: My configuration. Minimalist, but helps save a few thousand keystrokes a day.](https://github.com/geerlingguy/dotfiles)
+
 ## Page Contents
 
 - [Windows](#Windows)
