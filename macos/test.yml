@@ -7,6 +7,6 @@
     - name: Test Shell Built-In
       ansible.builtin.shell: |
         echo "It worked"
-
+      changed_when: false
 
 # EOF

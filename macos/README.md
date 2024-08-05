@@ -23,7 +23,7 @@ The following commands must be installed and available in your Terminal app:
 - `git`
 - `brew` (Homebrew)
 
-If Homebrew is not installed, then follow the [Homebrew installation instructions](https://brew.sh/) to do so.
+If Homebrew is not installed, then follow the [Homebrew installation instructions](https://brew.sh/) to do so. Git should already be installed, but if it is not, you can use Homebrew to install it: `brew install git`.
 
 #### Optional
 
@@ -33,11 +33,14 @@ You may wish to set your default shell to Bash, which you can do in Terminal's S
 # Get the current default shell (Blank line indicates ZSH)
 defaults read com.apple.Terminal Shell
 
+# Set the current default shell back to default (/bin/zsh)
+defaults write com.apple.Terminal Shell ""
+
 # Set the current default shell to BASH (/bin/bash)
 defaults write com.apple.Terminal Shell "/bin/bash"
 
-# Set the current default shell back to default (/bin/zsh)
-defaults write com.apple.Terminal Shell ""
+# Kill the Terminal application
+killall Terminal # You must manually start the app again after killing it here
 ```
 
 ### Initialzation
