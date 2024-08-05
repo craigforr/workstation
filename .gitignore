@@ -1,0 +1,12 @@
+# .gitignore
+
+# Working directories
+**/.working/*
+**/.staged/*
+
+# Files and directories flagged to ignore
+**/.ignore/*
+*.ignore
+ignore.*
+
+# EOF
