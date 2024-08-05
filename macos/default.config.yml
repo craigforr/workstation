@@ -1,6 +1,26 @@
 ---
+configure_dock: true
 configure_sudoers: true
 data_dir: "{{ ansible_env.HOME }}/data"
+dockitems_remove:
+  - 'App Store'
+  - 'Facetime'
+  - 'Launchpad'
+  - 'Messages'
+  - 'Maps'
+  - 'Photos'
+  - 'Podcasts'
+  - 'Reminders'
+  - 'Notes'
+  - 'Freeform'
+  - 'News'
+  - 'TV'
+dockitems_persist:
+  - name: Settings
+    path: "/System/Applications/System Settings.app/"
+  - name: Brave
+    path: "/Applications/Brave Browser.app/"
+    pos: 2
 home_dir: "{{ lookup('ansible.builtin.env', 'HOME') }}"
 homebrew_prefix: "{{ (ansible_machine == 'arm64') | ternary('/opt/homebrew', '/usr/local') }}"
 homebrew_install_path: "{{ homebrew_prefix }}{{ '/Homebrew' if ansible_machine != 'arm64' }}"

@@ -25,10 +25,16 @@
     - role: homebrew
       tags:
         - 'homebrew'
+
     - role: mas
       when: mas_installed_apps or mas_uninstalled_apps
       tags:
         - 'mas'
+
+    - role: dock
+      when: configure_dock
+      tags:
+        - 'dock'
 
   tasks:
     - name: HOME Environment Variable
@@ -45,4 +51,4 @@
         - 'firstrun'
         - 'sudoers'
 
-# EOF
+...

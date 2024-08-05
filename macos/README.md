@@ -52,7 +52,7 @@ defaults write com.apple.Terminal Shell "/bin/bash"
 killall Terminal # You must manually start the app again after killing it here
 ```
 
-### Initialzation
+### Initialization
 
 Initial setup of environment for automation.
 
