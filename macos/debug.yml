@@ -1,0 +1,47 @@
+---
+- hosts: localhost
+
+  vars:
+
+    ansible_doc: /home/admin/.local/bin/ansible-doc
+    modules_all: "{{ (out.stdout|from_yaml).keys()|list }}"
+    modules_str: |
+      {% for i in modules_all %}
+      {% set arr = i.split('.') %}
+      - {collection: {{ arr[:-1]|join('.')|d('ansible.builtin', true) }}, module: {{ arr[-1] }}}
+      {% endfor %}
+    modules_grp: "{{ modules_str|from_yaml|groupby('collection') }}"
+    collections_list: "{{ modules_grp|map('first') }}"
+    modules_lists: "{{ modules_grp|map('last')|map('map', attribute='module') }}"
+    collections: "{{ dict(collections_list|zip(modules_lists)) }}"
+
+  tasks:
+
+    - command: "{{ ansible_doc }} -t module -l -j"
+      register: out
+
+    - debug:
+        var: out.stdout_lines
+      when: false
+    - debug:
+        var: out.stdout
+      when: false
+    - debug:
+        var: modules_all
+      when: false
+    - debug:
+        var: modules_str
+      when: false
+    - debug:
+        var: collections.keys()|list|to_yaml
+      when: true
+    - debug:
+        var: collections['ansible.builtin']|to_yaml
+      when: true
+    - debug:
+        var: collections['community.digitalocean']|to_yaml
+      when: true
+    - debug:
+        var: collections['community.general']|to_yaml
+      when: true
+...
