@@ -3,7 +3,6 @@
 
   vars:
 
-    ansible_doc: /home/admin/.local/bin/ansible-doc
     modules_all: "{{ (out.stdout|from_yaml).keys()|list }}"
     modules_str: |
       {% for i in modules_all %}
@@ -17,7 +16,7 @@
 
   tasks:
 
-    - command: "{{ ansible_doc }} -t module -l -j"
+    - command: "ansible-doc -t module -l -j"
       register: out
 
     - debug:
